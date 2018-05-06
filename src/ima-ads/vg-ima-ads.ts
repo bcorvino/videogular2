@@ -49,7 +49,16 @@ export class VgImaAds implements OnInit, OnDestroy {
         this.onContentEnded = this.onContentEnded.bind(this);
     }
 
+    playhandler = function(th):void {
+        if(!this.alreadyfixed) document.getElementsByTagName('video')[0].play();
+        this.alreadyfixed = true;   
+    }
+
     ngOnInit() {
+
+        let adplayer = document.querySelector(".video");
+        adplayer.addEventListener('click', this.playhandler);
+
         if (this.API.isPlayerReady) {
             this.onPlayerReady();
         }
